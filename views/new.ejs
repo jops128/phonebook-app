@@ -1,0 +1,52 @@
+<% include partials/header %>
+
+<h1>Add New Contact</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form action="/" method="POST">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="name" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="surname" placeholder="Surname">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group"><input class="form-control" type="text" name="address" placeholder="Address"></div>
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                <div class="number">
+                    <p>Add Number <span id="plus"> <i class="fa fa-plus"></i></span></p>
+                       <div class="row add">
+                        <div class="col-3">
+                            <select class="form-control mr-sm-2 new" name="phoneType[0]">
+                                <option value="Mobile">Mobile</option>
+                                <option value="Telephone">Telephone</option>
+                                <option value="Fax">Fax</option>
+                            </select>
+                        </div>
+                        <div class="col-5">
+                            <div class="form-group"><input class="form-control new text" type="number" name="phoneNumber[0]" placeholder="Number..."></div>
+                        </div>
+                        <div class="col-4">
+                            <select class="form-control mr-sm-2 new select" name="phoneDefault[0]">
+                                <option value="true">Default</option>
+                                <option value="false">Not Default</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success btn-lg" id="addBtn">Add</button>
+                <a class="btn btn-danger btn-lg" href="/">Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<% include partials/footer %>

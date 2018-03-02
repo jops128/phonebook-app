@@ -1,0 +1,25 @@
+<% include partials/header %>
+
+<h1><span class="name"><%= contact.name %> <%= contact.surname %></span></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Contact Numbers:</h2>
+            <% for(var i = 0; i < contact.addedNumbers.length; i++) { %>
+                <li><strong><%= contact.addedNumbers[i].phone %>: </strong><%= contact.addedNumbers[i].number %></li>
+            <% } %>
+            <hr/>
+            <h2>Contact Email:</h2>
+            <li><%= contact.email %></li>
+            <hr/>
+            <h2>Contact Address:</h2>
+            <li><%= contact.address %></li>
+            <hr/>
+            <a class="btn btn-info btn-lg" href="/<%= contact._id %>/edit">Edit Contact</a>
+        </div>
+    </div>
+</div>
+
+
+
+<% include partials/footer %>

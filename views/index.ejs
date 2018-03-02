@@ -1,0 +1,24 @@
+<% include partials/header %>
+
+<h1>Phonebook</h1>
+<div class="container index">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <% if(contacts.length != 0) { %>
+                <% contacts.forEach(function(contact) { %>
+                    <li>Name: <span class="name"><%= contact.name %> <%= contact.surname %></span></li>
+                    <li>
+                        <%= contact.defaultNumber.phone %>: 
+                        <%= contact.defaultNumber.number %>
+                    </li>
+                    <a href="/<%= contact._id %>">Details</a>
+                    <hr/>
+                <% }); %>
+            <% } else { %>
+                <h4>No contacts</h4>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer %>

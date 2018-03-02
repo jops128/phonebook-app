@@ -1,0 +1,65 @@
+<% include partials/header %>
+
+<h1>Edit Contact</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form action="/<%= contact._id %>?_method=PUT" method="POST">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="name" value="<%= contact.name %>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="surname" value="<%= contact.surname %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group"><input class="form-control" type="text" name="address" value="<%= contact.address %>"></div>
+                <div class="form-group"><input class="form-control" type="email" name="email" value="<%= contact.email %>"></div>
+                <div class="row">
+                    <div class="col-12 number">
+                        <p>Contact Numbers <span id="plus"> <i class="fa fa-plus"></i></span></p>
+                        <% for(var i = 0; i < contact.addedNumbers.length; i++){ %>
+                            <div class="row add">
+                                <div class="col-3">
+                                    <select class="form-control mr-sm-2 new" name="phoneType[<%= i %>]">
+                                        <option><%= contact.addedNumbers[i].phone %></option>
+                                        <option value="Mobile">Mobile</option>
+                                        <option value="Telephone">Telephone</option>
+                                        <option value="Fax">Fax</option>
+                                    </select>
+                                </div>
+                                <div class="col-5">
+                                    <div class="form-group"><input class="form-control new" type="number" name="phoneNumber[<%= i %>]" value="<%= contact.addedNumbers[i].number %>"></div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <select class="form-control mr-sm-2 new" name="phoneDefault[<%= i %>]">
+                                            <% if(contact.addedNumbers[i].default === true) { %>
+                                            <option selected value="true">Default</option>
+                                            <option value="false">Not default</option>
+                                            <% } else { %>
+                                            <option selected value="false">Not default</option>
+                                            <option value="true">Default</option>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+                <button class="btn btn-success btn-lg">Edit</button>
+                <a class="btn btn-warning btn-lg" href="/<%= contact._id %>">Back</a>
+            </form>
+            <form id="delete-form" action="/<%= contact._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger btn-lg">Delete Contact</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer %>
